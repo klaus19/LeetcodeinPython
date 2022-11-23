@@ -1,13 +1,10 @@
-class Solution(object):
-    def jazz(self, list=[]):
+class Solution:
+ def jazz(self,items):
+        return [item if '7' in item else item+'7' for item in items]
 
-        for i in range(len(list)):
-            if '7' not in list[i]:
-                list[i]+'7'
-            return list
 
 
 if __name__ == "__main__":
     p = Solution()
-    li = ['a', 'g', 'u']
-    print(p.jazz(li))
+    lt = ['a7', 'g', 'u']
+    print(p.jazz(lt))
