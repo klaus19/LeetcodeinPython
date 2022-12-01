@@ -1,9 +1,9 @@
 class Solution(object):
 
     def landmass(self, st, num):
-        percentage = 148940000 / num * 100
-
-        return str(st) + " " + "is" + " " + str(percentage) + "of total world mass!"
+        pt = (num / 148940000) * 100
+        percentage = round(pt,2)
+        return str(st) + " " + "is" + " " + str(percentage) + " " + "of total world mass!"
 
 
 if __name__ == "__main__":
