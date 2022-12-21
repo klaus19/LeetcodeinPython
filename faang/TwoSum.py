@@ -1,5 +1,5 @@
 class Solution(object):
-    def twoSum(self, nums, target):
+    def twoSum(self, nums, target):  # Asked in Amazon,Google,Bloomberg,Apple
 
         for i in range(len(nums)):
             another = target - nums[i]
