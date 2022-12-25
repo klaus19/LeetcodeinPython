@@ -1,15 +1,18 @@
 class Solution(object):
     def rob(self, nums):
 
-        if not nums: return 0
+        n = len(nums)
+        if n == 0: return 0
+        if n == 1: return nums[0]
 
-        dp = [0] * len(nums)
-        for i in range(len(nums)):
-            if i - 1 > 0:
-                dp[i] = nums[i] + max(dp[:i - 1])
-            else:
-                dp[i] = nums[i]
-        return max(dp)
+        sums = [0] * n
+        sums[0] = nums[0]
+        sums[1] = max(nums[0], nums[1])
+
+        for i in range(2, n):
+            sums[i] = max(sums[i - 2] + nums[i], sums[i - 1])
+
+        return sums[n - 1]
 
 
 if __name__ == "__main__":
