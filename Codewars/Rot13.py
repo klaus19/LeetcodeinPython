@@ -12,6 +12,17 @@ class Solution(object):
                     for index, letter in enumerate(uppercase))
         return "".join(code.get(letter, letter) for letter in message)
 
+def rot(message):
+    alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    outputMessage = ""
+    for letter in message:
+        if letter in alpha.lower():
+            outputMessage += alpha[(alpha.lower().index(letter) +13) % 26].lower()
+        elif letter in alpha:
+            outputMessage += alpha[(alpha.index(letter) +13) % 26]
+        else:
+            outputMessage += letter
+    return outputMessage
 
 if __name__ == "__main__":
     pt = "Hell"
