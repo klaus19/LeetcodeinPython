@@ -53,6 +53,13 @@ class Solution(object):
             # Return the first character in the queue of non-repeating characters, or None if the queue is empty
             return non_repeating[0] if non_repeating else None
 
+    def first_non_repeating_letter(self,string):
+        string_lower = string.lower()
+        for i, letter in enumerate(string_lower):
+            if string_lower.count(letter) == 1:
+                return string[i]
+
+        return ""
 
 if __name__ == "__main__":
     pt = "hhello"
