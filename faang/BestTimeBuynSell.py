@@ -12,4 +12,4 @@ class Solution(object):
 
 if __name__ == '__main__':
     ltr = [7, 1, 5, 3, 6, 4]
-    print(Solution().best_time(ltr))
+    print(Solution().best_time(ltr))   # the output is 5
