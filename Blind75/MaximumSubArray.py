@@ -1,16 +1,16 @@
 class Solution(object):
 
     def maximum_subarray(self,nums):
-        ret = float('-inf')
-        prevsum = nums[0]
 
+        prev_sum = nums[0]
+        max_sum = float('-inf')
         for i in range(1, len(nums)):
-            prevsum = max(nums[i], nums[i] + prevsum)
-            ret = max(ret, prevsum)
+            prev_sum = max(nums[i], nums[i] + prev_sum)
+            max_sum = max(max_sum, prev_sum)
 
-        ret = max(nums[0], ret)
+        max_sum = max(nums[0], max_sum)
 
-        return ret
+        return max_sum
 
 if __name__ == '__main__':
 
