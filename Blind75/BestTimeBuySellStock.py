@@ -2,8 +2,9 @@ class Solution(object):
 
     def  buySell(self,prices):
 
-        min_price = float('inf')
+
         max_profit = 0
+        min_price = float('inf')
 
         for price in prices:
             min_price = min(min_price, price)
