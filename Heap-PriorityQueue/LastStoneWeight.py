@@ -1,29 +1,22 @@
+import heapq
+
+
 class Solution(object):
+   def lastStoneWeight(self,stones):
+    heap = []
+    # Convert to negative values, so we can use a max heap
+    for stone in stones:
+        heapq.heappush(heap, -stone)
+    while len(heap) > 1:
+        x = -heapq.heappop(heap)
+        y = -heapq.heappop(heap)
+        if x != y:
+            heapq.heappush(heap, -(y - x))
+    if len(heap) == 0:
+        return 0
+    else:
+        return -heap[0]
 
-# lt=[2,7,4,1,8,1] , output =1
-
-    def lastStoneWeight(self, stones):
-        global second
-        empty=[]
-
-        if len(stones)==1:
-            return stones[0]
-
-        first = empty.append(max(stones))
-        stones.remove(first)
-
-
-        for i in range(len(stones)):
-            second = max(stones)
-            if stones[i]==second:
-                del stones[i]
-            empty.append(second)
-
-        for j in range(0,len(empty)):
-            diff = first-second
-            stones.append(diff)
-
-        return stones
 
 if __name__ == "__main__":
     lt =[2,7,4,1,8,1]
