@@ -1,28 +1,33 @@
 class Solution(object):
 
-    def searchMatrix(self,matrix, target):
-        if not matrix or not matrix[0]:
+    def searchMatrix(self, matrix, target):
+        # Base condition...
+        if not matrix:
             return False
-        m, n = len(matrix), len(matrix[0])
-        left, right = 0, m - 1
-        while left <= right:
-            mid = left + (right - left) // 2
-            if matrix[mid][0] <= target <= matrix[mid][n - 1]:
-                left, right = 0, n - 1
-                while left <= right:
-                    mid2 = left + (right - left) // 2
-                    if matrix[mid][mid2] == target:
-                        return True
-                    elif matrix[mid][mid2] < target:
-                        left = mid2 + 1
-                    else:
-                        right = mid2 - 1
-                return False
-            elif matrix[mid][0] < target:
-                left = mid + 1
+        row = len(matrix)  # Number of Rows of the matrix...
+        col = len(matrix[0])  # Number of Columns of the matrix...
+        # Initialize beg index of the considered 1D matrix (i.e: 0)...
+        beg = 0
+        # Set end index of the considered 1D matrix (i.e: row*col)...
+        end = row * col
+        # Now apply binary search & Run a while loop...
+        while beg < end:
+            # Get the middle index as (beg + (end - beg)) // 2...
+            mid = beg + (end - beg) // 2
+            # Set the element at middle index using matrix[mid / col][mid % col].
+            idx = matrix[mid // col][mid % col];
+            # If the element present at the middle index is equal to the target integer, return true...
+            if idx == target:
+                return True
+            # If the middle index element is lesser than the target...
+            if idx < target:
+                beg = mid + 1
+            # If the middle index is greater than the target...
             else:
-                right = mid - 1
-        return False
+                end = mid
+        return False  # As we didn't get the target, we can directly return false...
+
+
 
 if __name__ == '__main__':
 
