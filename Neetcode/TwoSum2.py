@@ -18,3 +18,4 @@ class Solution(object):
                     left = mid + 1
             if nums[left] + nums[i] == target:
                 return [i + 1, left + 1]
+
