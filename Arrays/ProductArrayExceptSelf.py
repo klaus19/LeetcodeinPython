@@ -1,18 +1,22 @@
 class Solution(object):
 
-    def product_except(self,arr):
-        res = [1] * len(arr)
+    def product_except(self,nums):
+        n = len(nums)
+        left_product = [1] * n
+        right_product = [1] * n
+        output = [1] * n
 
-        prefix=1
-        for i in range(len(arr)):
-            res[i]=prefix
-            prefix *=arr[i]
-        postfix=1
-        for i in range(len(arr),1,-1):
-            res[i] *= postfix
-            postfix *= arr[i]
-        return res
+        for i in range(1, n):
+            left_product[i] = left_product[i - 1] * nums[i - 1]
+
+        for i in range(n - 2, -1, -1):
+            right_product[i] = right_product[i + 1] * nums[i + 1]
+
+        for i in range(n):
+            output[i] = left_product[i] * right_product[i]
+
+        return output
 
 if __name__ == "__main__":
-    lt = [2,3,4]
+    lt = [1,2,3,4]
     print(Solution().product_except(lt))
