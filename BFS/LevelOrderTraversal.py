@@ -26,3 +26,4 @@ class Solution(object):
             if level:
                res.append(level)
         return res
+
